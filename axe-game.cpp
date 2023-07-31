@@ -1,9 +1,13 @@
 #include <raylib.h>
 int main(){
-    int width = 350;
-    int height = 200;
-    int circleA = 175;
-    int circleB = 100;
+    int width = 850;
+    int height = 450;
+
+    int circle_x = 175;
+    int circle_y = 100;
+
+    int axe_x = 300;
+    int axe_y = 0;
 
     InitWindow(width, height, "My Window");
 
@@ -14,13 +18,22 @@ int main(){
 
         ClearBackground(WHITE);
 
-        DrawCircle(circleA, circleB, 25, BLUE);
+        DrawCircle(circle_x, circle_y, 25, BLUE);
+        DrawRectangle(axe_x, axe_y, 50, 50, RED);
 
-        if(IsKeyDown(KEY_D)){
-            circleA += 10;
+        axe_y += 10;
+
+        if(IsKeyDown(KEY_D) && circle_x < width){
+            circle_x += 10;
         };
-        if(IsKeyDown(KEY_A)){
-            circleA -= 10;
+        if(IsKeyDown(KEY_A) && circle_x > 0){
+            circle_x -= 10;
+        };
+        if(IsKeyDown(KEY_S) && circle_y < height){
+            circle_y += 10;
+        };
+        if(IsKeyDown(KEY_W) && circle_y > 0){
+            circle_y -= 10;
         };
 
         EndDrawing();
